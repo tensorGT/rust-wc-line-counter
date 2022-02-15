@@ -22,3 +22,16 @@ fn main() {
     if args.len() < 2 {
         eprintln!("usage: word_line_counter [-l] [-w] [-c] <file>");
         process::exit(1);
+    }
+
+    let mut show_l = false;
+    let mut show_w = false;
+    let mut show_c = false;
+    let mut file_path: Option<&str> = None;
+
+    for arg in &args[1..] {
+        match arg.as_str() {
+            "-l" => show_l = true,
+            "-w" => show_w = true,
+            "-c" => show_c = true,
+            _ => file_path = Some(arg.as_str()),
