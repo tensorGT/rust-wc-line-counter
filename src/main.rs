@@ -35,3 +35,15 @@ fn main() {
             "-w" => show_w = true,
             "-c" => show_c = true,
             _ => file_path = Some(arg.as_str()),
+        }
+    }
+
+    if !show_l && !show_w && !show_c {
+        show_l = true;
+        show_w = true;
+        show_c = true;
+    }
+
+    let path = match file_path {
+        Some(p) => p,
+        None => {
