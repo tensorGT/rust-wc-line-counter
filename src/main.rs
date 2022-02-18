@@ -47,3 +47,15 @@ fn main() {
     let path = match file_path {
         Some(p) => p,
         None => {
+            eprintln!("please give a file path");
+            process::exit(1);
+        }
+    };
+
+    match count_file(path) {
+        Ok(c) => {
+            let mut out = Vec::new();
+            if show_l {
+                out.push(format!("lines: {}", c.lines));
+            }
+            if show_w {
