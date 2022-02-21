@@ -59,3 +59,16 @@ fn main() {
                 out.push(format!("lines: {}", c.lines));
             }
             if show_w {
+                out.push(format!("words: {}", c.words));
+            }
+            if show_c {
+                out.push(format!("bytes: {}", c.bytes));
+            }
+            println!("{} -> {}", path, out.join(" | "));
+        }
+        Err(err) => {
+            eprintln!("could not read '{}': {}", path, err);
+            process::exit(1);
+        }
+    }
+}
